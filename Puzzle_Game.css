@@ -1,0 +1,104 @@
+*
+{
+	padding: 0px;
+	margin: 0px;
+}
+body
+{
+	background: linear-gradient(to right, rgb(5, 117, 230), rgb(2, 27, 121));
+	background-size: 100% 120%;
+	background-repeat: no-repeat;
+
+}
+#head
+{
+	text-align: center;
+	background: linear-gradient(to right, rgb(0, 0, 70), rgb(28, 181, 224));
+	padding: 40px;
+	font-size: 40px;
+	color: black;
+	letter-spacing: 10px;
+	word-spacing: 20px;
+}
+h1
+{
+	text-shadow: 2px 2px 4px #ffff;
+}
+.asd
+{
+	border: 4px solid black;
+	width: 50%;
+	height: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-image: url(https://st2.depositphotos.com/1010735/11020/v/950/depositphotos_110203086-stock-illustration-round-background-with-drops.jpg);
+	background-size: 100% 100%;
+	margin: 1px auto;
+	flex-direction: column;
+}
+#inp
+{
+	font-size: 25px;
+	text-align: center;
+	border-radius: 20px;
+	border: none;
+	background: skyblue;
+
+}
+#btn
+{
+	padding: 8px 35px;
+	font-size: 20px;
+	background: blue;
+	color: white;
+	border-radius: 15px;
+	border: 1px solid white;
+}
+
+h3
+{
+	font-size: 30px;
+	color: black;
+}
+.divv
+{
+	width: 35%;
+	margin-left: 500px;
+	font-size: 30px;
+	margin-top: 80px;
+
+}
+#scr
+{
+	float: right;
+	color: white;
+}
+
+.tim 
+{
+	float: left;
+	color: white;
+}
+#msg
+{
+	color: green;
+}
+#a
+{
+	padding: 5px 100px;
+	margin-left: 4px;
+	background-color: black;
+	color: white;
+}
+#a:hover
+{
+	background: blue;
+}
+.b
+{
+	width: 100%;
+	height: 31px;
+	
+}
+

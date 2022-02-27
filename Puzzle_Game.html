@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Puzzle Game</title>
+	<link rel="stylesheet" type="text/css" href="Puzzle_Game.css">
+	 <link
+    rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+	<header>
+		<h1 id="head">PUZZLE GAME</h1>
+	</header>
+	<div class="b">
+		<button onclick="array1()" id="a">Animals</button>
+		<button onclick="array2()" id="a">Birds</button>
+		<button onclick="array3()" id="a">Flowers</button>
+		<button onclick="array4()" id="a">Fruits</button>
+		<button onclick="array5()" id="a">Vegetables</button>
+		<button onclick="array6()" id="a">Places</button>
+	</div>
+	<div class="divv">
+		<strong><p class="tim">Time: <span id="time"></span></p>
+		<p id="scr">Score: <span id="score"></span></p></strong>
+	</div>
+	<div class="asd">
+		<h3 id="msg">Click to Start the Game</h3><br>
+		<input type="text" name="value" id="inp" style="display: none;"><br><br>
+		<button id="btn" onmouseenter="hover()" onmouseleave="nohover()">Start</button>
+	</div>
+
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		let arr = [];
+		function array1() {
+			arr = ['dog', 'cat', 'lion', 'deer', 'wolf', 'tiger', 'cow', 'buffalo', 'goat', 'rat', 'elephant', 'zebra', 'girrafe', 'cheetah', 'rabbit', 'snake', 'frog', 'ant', 'mouse'];
+		}
+		function array2() {
+			arr = ['owl', 'dove', 'vulture', 'rooster', 'penguin', 'parrot', 'turkey', 'peacock', 'ostrich', 'flamingo', 'crow', 'pegeon', 'hen', 'sparrow', 'hawk'];
+		}
+		function array3() {
+			arr = ['rose', 'peony', 'orchids', 'snowdrop', 'sunflower', 'jasmine', 'daisy', 'iris', 'bluebell', 'aster', 'lily', 'lotus', 'tulips'];
+		}
+		function array4() {
+			arr = ['mangoes','oranges','apples','pomegranates','watermelons','bananas','papaya','guava','cherry'];
+		}
+		function array5() {
+			arr = ['carrot','onion','potato','pee','ginger','cabbage','cauliflower','garlic','tomato','pumpkin'];
+		}
+		function array6() {
+			arr = ['delhi','mumbai','goa','patna','lucknow','varanasi','chandigarh','chennai','kolkata','panaji','ayodhya','agra','mirzapur'];
+		}
+
+		
+		let id = "no";
+		let score = 0;
+		let newword = ""
+		let randword = ""
+		let x = 0;
+		let v = 0;
+		function hover()
+		{
+			let a = document.getElementById('btn')
+			a.className = "animate__animated animate__rubberBand";
+
+		}
+		function nohover()
+		{
+			let a = document.getElementById('btn')
+			a.className = "";
+		}
+		$("document").ready(function(){
+			$("#btn").click(function(){
+				if(id == "no"){
+					
+					newword = createword();
+					if(newword != 0){
+						$("#inp").show();
+						randword = createrandword(newword.split("")).join("");
+						$("#btn").text(`Guess`);
+						$("#msg").text(`Your question is "${randword}"`);
+						id = "yes";
+						v = setInterval(function Timer(){
+							if(x!=20){
+								$("#time").text(++x);
+							}
+							else
+							{
+								x=0;
+								this.clearInterval(v)
+								$("#msg").text(`Sorry You failed!!!`);
+								$("#inp").hide();
+								$("#btn").text(`Start`);
+								id = "no"
+								score = 0;
+								$("#score").text(score)
+							}
+						} ,1000);
+					}
+					else
+					{
+						$("#msg").text(`Please select the type.`);
+					}
+				}
+				else{
+					let temp1 = $("#inp").val();
+					if(newword == temp1){
+						id = "no";
+						$("#msg").text("You are correct");
+						$("#inp").hide();
+						$("#btn").text("Start Again");
+						$("#inp").val("");
+						score++;
+						clearInterval(v);
+						x=0;
+
+					}
+					else
+					{
+						$("#msg").html(`Sorry Try Again..."${randword}"`);
+						score = 0;
+					}
+					$("#score").text(score);
+
+				}
+			});
+
+		});
+
+		function createword(){
+			if(arr.length != 0){
+				let i = Math.floor(Math.random()*arr.length);
+				return arr[i];
+			}
+			else
+			{
+				return 0;
+			}
+		}
+
+		function createrandword(arg) {
+			for (let i = arg.length - 1; i > 0; i--){
+				let j = Math.floor(Math.random()*i);
+				let temp = arg[i];
+				arg[i] = arg[j];
+				arg[j] = temp;
+			}
+			return arg;
+		}
+		
+	
+	</script>
+</body>
+</html>
